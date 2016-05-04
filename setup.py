@@ -5,7 +5,7 @@ from setuptools import setup, find_packages
 setup(name='tower-web',
       version='1.0.0',
       description='Browser-based GCS.',
-      author='Tim Ryan',
+      author='Hanno Blankenstein',
       author_email='hannoblankenstein@gmail.com',
       url='https://github.com/hblanken/tower-web.git',
       install_requires=[
