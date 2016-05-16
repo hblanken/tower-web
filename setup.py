@@ -22,7 +22,6 @@ setup(name='tower-web',
               'templates/css/*',
               'templates/fancybox/*',
               'templates/font/*',
-              'templates/fonts/roboto/*',
               'templates/js/*'
           ],
       },
