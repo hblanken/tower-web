@@ -37,7 +37,7 @@ window.onload = function () {
 	 <!-- loop: true, -->
 	  sources: [
         { type: "application/x-mpegurl",
-          src: "playlist.m3u8" }
+          src: "playlist/playlist.m3u8" }
       ]
     }
 
@@ -127,7 +127,7 @@ window.top.postMessage('gcs', '*');
             <div class="card-content white-text">
               <!--{% if branding %}-->
               <span class="card-title">
-        unleash
+        unleash <sup>air</sup>
       </span>
       <!--{% endif %}-->
               
@@ -135,13 +135,28 @@ window.top.postMessage('gcs', '*');
       
             </div>
             <div class="card-action">
-            <a id="header-arm"><i class="material-icons left">vpn_key</i>ARM</a>
+            <a href="index.php?mav=true"><i class="material-icons left">power_settings_new</i></a>
+            <a id="header-arm">ARM</a>
       		<a id="header-mode-loiter">Loiter</a>
       		<a id="header-mode-stabilize">Stable</a>
             </div>
           </div>
         </div>
-      </div>
+ 
+  
+    
+      <!-- This link will add ?run=true to your URL, myfilename.php?run=true -->
+<div class="fixed-action-btn horizontal" style="bottom: 45px; right: 24px;">
+    <a class="btn-floating btn-large red">
+      <i class="large material-icons">mode_edit</i>
+    </a>
+    <ul>
+      <li><a class="btn-floating green" href="index.php?run=true"><i class="material-icons">videocam</i></a></li>	      <li><a class="btn-floating red" href="index.php?stop=true"><i class="material-icons">videocam_off</i></a></li>
+      <li><a class="btn-floating blue" id="header-center"><i class="material-icons">my_location</i></a></li>
+    </ul>
+  </div>
+ 
+</div>
     <div class="row">
         <div class="col s12 m4">
           <div class="card">
@@ -161,10 +176,6 @@ window.top.postMessage('gcs', '*');
           </div>
           </div>
         </div>
-    <div class="row">
-        <div class="col s12 m4">   
-     <a class="btn-floating btn-large waves-effect waves-light red" id="header-center"><i class="material-icons">my_location</i></a>
-      </div>
       </div>
  
     <div id="map" class="map"></div>
