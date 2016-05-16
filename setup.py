@@ -21,6 +21,7 @@ setup(name='tower-web',
               'templates/*',
               'templates/css/*',
               'templates/fancybox/*',
+              'templates/font/*',
               'templates/font/roboto/*',
               'templates/font/material-design-icons/*',
               'templates/js/*'
