@@ -121,7 +121,9 @@ def api_mode():
             return jsonify(ok=False)
  # Hanno added       
 @app.route("/api/takeoff", methods=['POST', 'PUT'])
-def arm_and_takeoff(aTargetAltitude):
+def arm_and_takeoff():
+if request.method == 'POST' or request.method == 'PUT':
+        try:
     """
     Arms vehicle and fly to aTargetAltitude.
     """
@@ -143,20 +145,21 @@ def arm_and_takeoff(aTargetAltitude):
         time.sleep(1)
 
     print "Taking off!"
-    vehicle.simple_takeoff(aTargetAltitude) # Take off to target altitude
+    vehicle.simple_takeoff(request.json['alt'].upper())) # Take off to target altitude
 
     # Wait until the vehicle reaches a safe height before processing the goto (otherwise the command
     #  after Vehicle.simple_takeoff will execute immediately).
-    while True:
-        print " Altitude: ", vehicle.location.global_relative_frame.alt
+    #while True:
+#        print " Altitude: ", vehicle.location.global_relative_frame.alt
         #Break and return from function just below target altitude.
-        if vehicle.location.global_relative_frame.alt>=aTargetAltitude*0.95:
-            print "Reached target altitude"
-            break
+#        if vehicle.location.global_relative_frame.alt>=aTargetAltitude*0.95:
+#            print "Reached target altitude"
+#            break
         time.sleep(1)
 
-arm_and_takeoff(request.json['alt'].upper())
-
+    except Exception as e:
+            print(e)
+            return jsonify(ok=False)
 # End add Hanno
 
 def connect_to_drone():
