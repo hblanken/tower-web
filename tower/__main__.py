@@ -124,10 +124,6 @@ def api_mode():
 def arm_and_takeoff():
     if request.method == 'POST' or request.method == 'PUT':
         try:
-    """
-    Arms vehicle and fly to aTargetAltitude.
-    """
-
             print "Basic pre-arm checks"
             # Don't try to arm until autopilot is ready
             while not vehicle.is_armable:
