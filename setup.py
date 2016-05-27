@@ -18,10 +18,7 @@ setup(name='tower-web',
           'tower': [
               'static/images/*',
               'static/scripts/*',
-              'templates/*',
-              'templates/css/*',
-              'templates/fancybox/*',
-              'templates/js/*'
+              'templates/*'
           ],
       },
       entry_points={
