@@ -119,7 +119,25 @@ def api_mode():
         except Exception as e:
             print(e)
             return jsonify(ok=False)
- # Hanno added       
+
+def connect_to_drone():
+    global vehicle
+
+    print 'connecting to drone...'
+    while not vehicle:
+        try:
+            vehicle = connect(sys.argv[1], wait_ready=True, rate=10)
+        except Exception as e:
+            print 'waiting for connection... (%s)' % str(e)
+            time.sleep(2)
+
+    # if --sim is enabled...
+    vehicle.parameters['ARMING_CHECK'] = 0
+    vehicle.flush()
+
+    print 'connected!'
+
+# Hanno added       
 @app.route("/api/takeoff", methods=['POST', 'PUT'])
 def arm_and_takeoff():
     if request.method == 'POST' or request.method == 'PUT':
@@ -158,23 +176,6 @@ def arm_and_takeoff():
             print(e)
             return jsonify(ok=False)
 # End add Hanno
-
-def connect_to_drone():
-    global vehicle
-
-    print 'connecting to drone...'
-    while not vehicle:
-        try:
-            vehicle = connect(sys.argv[1], wait_ready=True, rate=10)
-        except Exception as e:
-            print 'waiting for connection... (%s)' % str(e)
-            time.sleep(2)
-
-    # if --sim is enabled...
-    vehicle.parameters['ARMING_CHECK'] = 0
-    vehicle.flush()
-
-    print 'connected!'
 
 # Never cache
 @app.after_request
