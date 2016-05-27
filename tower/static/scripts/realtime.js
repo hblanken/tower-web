@@ -114,30 +114,41 @@ $('#header-arm').on('click', function () {
   });
 })
 
-$('#header-mode-loiter').on('click', function () {
+$('#header-mode-guided').on('click', function () {
   $.ajax({
     method: 'PUT',
     url: '/api/mode',
     contentType : 'application/json',
-    data: JSON.stringify({ mode: 'LOITER' }),
+    data: JSON.stringify({ mode: 'GUIDED' }),
   })
   .done(function( msg ) {
     console.log('sent mode change')
   });
 })
 
-$('#header-mode-stabilize').on('click', function () {
+$('#header-mode-rtl').on('click', function () {
   $.ajax({
     method: 'PUT',
     url: '/api/mode',
     contentType : 'application/json',
-    data: JSON.stringify({ mode: 'STABILIZE' }),
+    data: JSON.stringify({ mode: 'RTL' }),
   })
   .done(function( msg ) {
     console.log('sent mode change')
   });
 })
-
+<!--Inserted Hanno-->
+$('#header-simple-takeoff').on('click', function () {
+  $.ajax({
+    method: 'PUT',
+    url: '/api/takeoff',
+    contentType : 'application/json',
+    data: JSON.stringify({ alt: '10' }),
+  })
+  .done(function( msg ) {
+    console.log('taking off')
+  });
+})
 var globmsg = null;
 
 var source = new EventSource('/api/sse/state');
