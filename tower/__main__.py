@@ -141,8 +141,9 @@ def arm_and_takeoff():
                 time.sleep(1)
 
             print "Taking off!"
-            vehicle.simple_takeoff(request.json['alt'].upper())) # Take off to target altitude
-
+            vehicle.simple_takeoff(request.json['alt'].upper()) # Take off to target altitude
+            vehicle.flush()
+            return jsonify(ok=True)
             # Wait until the vehicle reaches a safe height before processing the goto (otherwise the command
             #  after Vehicle.simple_takeoff will execute immediately).
             #while True:
