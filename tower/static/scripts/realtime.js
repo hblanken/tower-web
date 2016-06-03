@@ -52,7 +52,7 @@ overlayContent.style.position = 'relative';
 overlayContent.style.height = '80px';
 overlayContent.style.width = '80px';
 overlayContent.innerHTML = '' +
-'<div style="background: rgba(0, 220, 255, 1); opacity: 0.4; width: 100%; height: 100%; border-radius: 50%; position: absolute; top: 0; left: 0; box-sizing: border-box; border: 1px solid rgb(0, 100, 150);"></div>' +
+'<div style="background: rgba(0, 190, 255, 1); opacity: 0.3; width: 100%; height: 100%; border-radius: 50%; position: absolute; top: 0; left: 0; box-sizing: border-box; border: 0.5px solid rgb(0, 190, 255);"></div>' +
 '<div style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; -webkit-transform: rotate(45deg);" class="heading"><div style="width: 0; height: 0; border-width: 10px; border-style: solid; border-color: red transparent transparent red; position: absolute; top: 0; left: 0;"></div></div>' +
 '<img src="static/images/unleash.png" height="50" style="z-index: 100; position: absolute; top: 50%; left: 50%; margin-left: -43px; margin-top: -20px;">';
 
@@ -143,10 +143,81 @@ $('#header-simple-takeoff').on('click', function () {
     method: 'PUT',
     url: '/api/takeoff',
     contentType : 'application/json',
-    data: JSON.stringify({ alt: '10' }),
+    /*data: JSON.stringify({ alt: '10' }),*/
   })
   .done(function( msg ) {
     console.log('taking off')
+  });
+})
+$('#header-left').on('click', function () {
+  $.ajax({
+    method: 'PUT',
+    url: '/api/left',
+    contentType : 'application/json',
+
+  })
+  .done(function( msg ) {
+    console.log('going left')
+  });
+})
+$('#header-right').on('click', function () {
+  $.ajax({
+    method: 'PUT',
+    url: '/api/right',
+    contentType : 'application/json',
+  })
+  .done(function( msg ) {
+    console.log('going right')
+  });
+})
+$('#header-forward').on('click', function () {
+  $.ajax({
+    method: 'PUT',
+    url: '/api/forward',
+    contentType : 'application/json',
+  })
+  .done(function( msg ) {
+    console.log('going forward')
+  });
+})
+$('#header-back').on('click', function () {
+  $.ajax({
+    method: 'PUT',
+    url: '/api/back',
+    contentType : 'application/json',
+  })
+  .done(function( msg ) {
+    console.log('going back')
+  });
+})
+$('#header-yaw').on('click', function () {
+  $.ajax({
+    method: 'PUT',
+    url: '/api/yaw',
+    contentType : 'application/json',
+  })
+  .done(function( msg ) {
+    console.log('turning')
+  });
+})
+$('#header-up').on('click', function () {
+  $.ajax({
+    method: 'PUT',
+    url: '/api/up',
+    contentType : 'application/json',
+  })
+  .done(function( msg ) {
+    console.log('going up')
+  });
+})
+$('#header-down').on('click', function () {
+  $.ajax({
+    method: 'PUT',
+    url: '/api/down',
+    contentType : 'application/json',
+  })
+  .done(function( msg ) {
+    console.log('going down')
   });
 })
 var globmsg = null;
