@@ -27,6 +27,10 @@
   /*font-family: Sans;*/
   margin-top: 20px;
 }
+nav {
+background-color: #444444 !important;
+}
+
 html, body, .map {
   margin: 0;
   padding: 0;
@@ -45,7 +49,7 @@ body.disabled {
   -webkit-filter: contrast(30%);
 }
 .opaque {
-	opacity: 0.8 !important;
+	opacity: 0.6 !important;
 }
 .glass {
 	background-color: rgba(0,0,0,0.2) !important;
@@ -60,21 +64,28 @@ window.top.postMessage('gcs', '*');
     <script src="http://openlayers.org/en/v3.8.2/build/ol.js" type="text/javascript"></script>
     <title>unleash tower</title>
   </head>
-  <body> <!--class="disabled"-->
+  <body class="disabled">
+    <nav>
+    <div class="navbar-fixed">
+      <div class="nav-wrapper">
+        <a href="/" onmouseover="javascript:event.target.port=80" class="brand-logo left">unleash <sup>air</sup></a>
+      </div>
+  </div>
+  </nav>
     <div id="header">
       {% if branding %}
         <h1>unleash tower</h1>
       {% endif %}
       <a class="btn-floating opaque disabled" id="header-center"><i class="material-icons">my_location</i></a>
-      <a class="waves-effect waves opaque red btn" id="header-arm">ARM</a>
-      <a class="waves-effect waves opaque green btn" id="header-mode-guided">Guided</a>
+      <a class="waves-effect waves opaque red accent-1 btn" id="header-arm">ARM</a>
+      <a class="waves-effect waves opaque green accent-4 btn" id="header-mode-guided">Guided</a>
       
       <div class="card-panel glass">
-      <h4><p id="header-state"><b>Armed:</b> ???<br><b>Mode:</b> ??? <br><b>Altitude:</b> ???</p></h4>
+      <h5><p id="header-state"><b>Armed:</b> ???<br><b>Mode:</b> ??? <br><b>Altitude:</b> ???</p></h5>
       </div>
       <p>
-      <a class="waves-effect waves opaque light-green btn" id="header-simple-takeoff">Takeoff</a>
-      <a class="waves-effect waves opaque light-green btn" id="header-mode-rtl">Return to Land</a>
+      <a class="waves-effect waves opaque teal btn" id="header-simple-takeoff">Takeoff</a>
+      <a class="waves-effect waves opaque teal btn" id="header-mode-rtl">Return to Land</a>
       </p>
       <br>
       <p>
